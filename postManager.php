@@ -3,14 +3,14 @@ class PostManager
 {
     private $_db;
 
-    public function __constructor($db)
+    public function __construct()
     {
-        $this->setDb($db);
+        $this->setDb();
     }
 
     public function setDb()
     {
-        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');//mettre ca ailleur en mettant le try/catch
         $this->_db = $db;
         
     }
@@ -26,14 +26,16 @@ class PostManager
         
     }
 
-    public function readPost($id)
+    public function readPost($id)//verifier le parametre avant de lancer la requete ?!
     {
-
+        $req = $this->_db->prepare('SELECT * FROM posts WHERE id=?');
+        $req->execute(array($id));
+        return $req;
     }
 
     public function readPosts()
     {
-
+        
     }
 
     public function updatePost(Post $post)
@@ -50,6 +52,7 @@ class PostManager
     {
 
     }
+
 }
 
 //a quel endroit appeller le PDO
