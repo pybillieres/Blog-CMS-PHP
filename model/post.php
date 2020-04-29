@@ -6,7 +6,7 @@ class Post
             $_date;
     
 //CONSTRUCT ET HYDRATE////////////////////////////////////////////////////////////////////////////////////////////
-    public function __construct(array $data) //interet du constructor ? Juste premiere à etre appelé ?
+    public function __construct(array $data)
     {
         $this->hydrate($data);
     }
@@ -15,7 +15,7 @@ class Post
     {
         foreach ($data as $key => $value)
         {
-            $method = 'set'.ucfirst($key); //methode dans un objet ?
+            $method = 'set'.ucfirst($key);
             if(method_exists($this, $method))
             {
                 $this->$method($value);

@@ -1,22 +1,9 @@
 <?php
-class PostManager
+require('manager.php');
+
+class PostManager extends Manager
 {
-    private $_db;
-
-    public function __construct()
-    {
-        $this->setDb();
-    }
-
-    public function setDb()
-    {
-        $db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');//mettre ca ailleur (ou ?)en mettant le try/catch
-        $this->_db = $db;
-        
-    }
-
-
-    public function createPost($title, $content, $date) //utiliser tjr meme nom de variable genant pour lecture du code ?
+    public function createPost($title, $content, $date)
     {
         $req = $this->_db->prepare('INSERT TO posts(title, content, date) VALUES(:title, :content, :date) ');
         $req->execute(array (
@@ -33,7 +20,7 @@ class PostManager
         return $req;
     }
 
-    public function readPosts()//combien de billet sur la page d'accueil ?
+    public function readPosts() //affiche les 10 derniers billets
     {
         $req = $this->_db->query('SELECT * FROM post ORDER BY date DESC LIMIT 0,10');
         return $req;
