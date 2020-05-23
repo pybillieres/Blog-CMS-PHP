@@ -18,13 +18,11 @@ class PostManager extends Manager
     public function readPost($id)//verifier le parametre avant de lancer la requete ?!
     {
         $req = $this->_db->prepare('SELECT * FROM posts WHERE id=?'); //* pose pb ou pas ?
-        var_dump($req);
         $req->execute(array($id));
         var_dump($req);
         while($row = $req->fetch())
         {
             $post = new Post($row);
-            var_dump($post);
         }
         return $post;
     }

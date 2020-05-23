@@ -3,7 +3,7 @@
 namespace Pierre\P4\Model;
 use Pierre\P4\Framework\ObjectClass;
 
-class Commment extends ObjectClass
+class Comment extends ObjectClass
 {
     private $_id,
             $_idPost,
@@ -36,5 +36,42 @@ class Commment extends ObjectClass
         return $this->_date;
     }
 
-//ajouter setter
+    public function setId($id)
+    {
+        $id = (int) $id;
+        if ($id > 0)
+        {
+            $this->_id = $id;
+        }
+    }
+
+    public function setIdPost($idPost)
+    {
+        $idPost = (int) $idPost;
+        if ($idPost > 0)
+        {
+            $this->_idPost = $idPost;
+        }
+    }
+
+    public function setAuthor($author)
+    {
+        if(is_string($author))
+        {
+            $this->_author = $author;
+        }
+    }
+
+    public function setContent($content)
+    {
+        if(is_string($content))
+        {
+            $this->_content = $content;
+        }
+    }
+
+    public function setDate($date)
+    {
+
+    }
 }

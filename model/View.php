@@ -10,7 +10,6 @@ class View
     public function render($template, $data = [])
     {
         $this->file = "view/" . $template . ".php"; // Attribut file prend la valeur du template de page POURQUOI PAS BESOIN DE ../ ?
-        var_dump($this->file);
         $content = $this->renderFile($this->file, $data);
         $view = $this->renderFile('view/template.php', [
             'title'=>$this->_title,

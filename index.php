@@ -2,6 +2,7 @@
 
 namespace Pierre\P4;
 use Pierre\P4\Autoloader;
+use Pierre\P4\controller\PostController;
 
 require_once 'Autoloader.php';
 require_once 'controller/PostController.php';
@@ -18,7 +19,8 @@ if(isset($_GET['action']))
     {
         if(isset($_GET['id']) && $_GET['id'] > 0)
         {
-            controller\post($_GET['id']);
+            $postCtrller = new PostController;
+            $postCtrller->post($_GET['id']);
         }
         else
         {
@@ -34,6 +36,6 @@ if(isset($_GET['action']))
 
 else
 {
-    //controller\post(1);
-    Controller\listPosts();//comment eviter de devoir préciser le chemin du namespace
+    $postCtrller = new PostController;
+    $postCtrller->listPosts();
 }
