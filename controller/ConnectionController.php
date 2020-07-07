@@ -34,7 +34,7 @@ class ConnectionController extends Controller
             $login = $this->request->parameter('login');
             $password = md5($this->request->parameter('password'));
             $userManager = new UserManager;
-            $user = $userManager->getUser($login);
+            $user = $userManager->getUserByLogin($login);
 
             if($password === $user->password())
             {

@@ -13,15 +13,17 @@
     </nav>
 
 <?php
+if (empty($posts) != TRUE) {
 foreach ($posts as $post)
 {
     ?>
     <div class="bg-light p-3 rounded">
         <h2><a href="index.php?controller=post&amp;action=post&amp;id=<?=($post->id())?>" class="text-dark"><?= htmlspecialchars($post->Title());?></a></h2>
         <a href="index.php?controller=post&amp;action=editPost&amp;id=<?=($post->id())?>" class="btn btn-info mr-2">Modifier</a>
-        <a href="index.php?controller=post&amp;action=deletePost&amp;id=<?=($post->id())?>&amp;title=<?=($post->title())?>" class="btn btn-info">Supprimer</a>
+        <a href="post/deletePost/<?=($post->id())?>" class="btn btn-info">Supprimer</a>
     </div>
     <br>
     <?php
+}
 }
 ?>

@@ -17,10 +17,10 @@ $this->_title = 'Changer password';
 <form method="post" action='index.php' class="mt-5 col-lg-4 formLogin text-center">
     <fieldset>
         <label for="password">Nouveau mot de passe</label>
-        <input type="text" name="login" id="login" class="form-control col-lg-12">
+        <input type="password" name="password" class="form-control col-lg-12">
         <label for="passwordConfirm">Confirmez votre nouveau mot de passe</label>
-        <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control col-lg-12">
-        <input type="hidden" name='action' value='password'>
+        <input type="password" name="passwordConfirm" class="form-control col-lg-12">
+        <input type="hidden" name='action' value='confirmPassword'>
         <input type="hidden" name='controller' value='user'>
         <input type="submit" value='Confirmer' class="mt-3 btn btn-primary">
     </fieldset>

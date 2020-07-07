@@ -7,7 +7,7 @@ class PostManager extends Manager
 {
     public function createPost(Post $post)// CREER AVEC PARAMETRE SEPARE OU DEPUIS OBJET POST ?
     {
-        $req = $this->_db->prepare('INSERT INTO posts(title, content, date) VALUES(:title, :content, :date) ');
+$req = $this->_db->prepare('INSERT INTO posts(title, content, date) VALUES(:title, :content, :date) ');
         $req->execute(array (
             ':title'=>$post->title(),
             ':content'=>$post->content(),
@@ -36,7 +36,11 @@ class PostManager extends Manager
             $posts[] = $post;
         }
 
-        return $posts;
+        if(empty($posts) != TRUE)
+        {
+        return $posts;   
+        }
+
     }
 
     public function updatePost(Post $post)

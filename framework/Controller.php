@@ -36,9 +36,9 @@ abstract class Controller
 
  protected function redirect($controller, $action='', $id='')
  {
-  echo 'toto';
-  var_dump($this);
-   header('location:index.php?controller='.$controller.'&action='.$action.'&id='.$id);
+  $racineWeb = Configuration::get("racineWeb", "/");
+  // redirection vers l'url racine_site/controller/action
+  header('Location: ' . $racineWeb . $controller . '/' . $action);
  }
 
 }

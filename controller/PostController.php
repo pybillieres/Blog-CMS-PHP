@@ -111,9 +111,11 @@ function deletePost()
     if($this->checkSession())
     {
         $id =$this->request->Parameter('id');
-        $title = $this->request->Parameter('title');
+        $postManager = new PostManager;
+        $post = $postManager->readPost($id);
+        var_dump($_GET);
         $view = new View;
-        $view->render('DeletePostView', ['id'=>$id, 'title'=>$title]);
+        $view->render('DeletePostView', ['post'=>$post]);
     }
     else
     {
@@ -125,6 +127,7 @@ function confirmDelete()
 {
     if($this->checkSession())
     {
+        var_dump($_GET);
         $id=$this->request->Parameter('id');
         $postManager = new PostManager;
         $commentManager = new CommentManager;

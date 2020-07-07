@@ -1,6 +1,8 @@
 <?php
 
 namespace Pierre\P4\Framework;
+use Pierre\P4\Framework\Configuration;
+
 abstract class Manager
 {
     protected $_db;
@@ -15,7 +17,10 @@ abstract class Manager
         try
         {
 
-        $db = new \PDO('mysql:host=db5000597044.hosting-data.io;dbname=dbs576180;charset=utf8;port=3306', 'dbu986463', 'nimier85SP/');
+        $dsn = Configuration::get("dsn");
+        $login = Configuration::get("login");
+        $password = Configuration::get("password");
+        $db = new \PDO($dsn, $login, $password);
         $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->_db = $db;
         }

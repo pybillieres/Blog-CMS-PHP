@@ -10,6 +10,6 @@ $this->_title = 'Supprimer article';
     </ul>
 </nav>
 
-<p>Etes vous sur de vouloir supprimer <?= $title ?> définitivement ? </p>
+<p>Etes vous sur de vouloir supprimer <?= $post->title(); ?> définitivement ? </p>
 <a href="index.php?controller=connection" class="btn btn-info mr-2">Retour</a>
-<a href="index.php?controller=post&amp;action=confirmDelete&amp;id=<?= $id ?>" class="btn btn-info mr-2">Supprimer</a>
+<a href="index.php?controller=post&amp;action=confirmDelete&amp;id=<?= $post->id(); ?>" class="btn btn-info mr-2">Supprimer</a>

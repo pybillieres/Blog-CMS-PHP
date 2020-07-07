@@ -1,6 +1,7 @@
 <?php
 
 namespace Pierre\P4\Model;
+use Pierre\P4\Framework\Configuration;
 
 class View
 {
@@ -10,10 +11,13 @@ class View
     public function render($template, $data = [])
     {
         $this->file = "View/" . $template . ".php"; // Attribut file prend la valeur du template de page POURQUOI PAS BESOIN DE ../ ?
+        $racineWeb = Configuration::get("racineWeb");
+        //$racineWeb = Configuration::get("racineWeb", "/");
         $content = $this->renderFile($this->file, $data);
         $view = $this->renderFile('View/Template.php', [
             'title'=>$this->_title,
-            'content'=>$content
+            'content'=>$content,
+            'racineWeb'=>$racineWeb
             ]);
         echo $view;
     }
